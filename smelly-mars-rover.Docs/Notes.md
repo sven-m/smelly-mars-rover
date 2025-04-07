@@ -1,0 +1,4 @@
+- ✅ Done
+- 🚧 WIP
+- ❌ Error
+- ⚠️ Todo
