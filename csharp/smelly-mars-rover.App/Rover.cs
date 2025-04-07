@@ -6,23 +6,6 @@
         private int _y = int.Parse(initialPosition.Split(' ')[1]);
         private char _dir = (initialPosition.Split(' ')[2])[0];
 
-        private static readonly Dictionary<char, char> LeftTurns = new()
-        {
-            { 'E', 'N' },
-            { 'N', 'W' },
-            { 'W', 'S' },
-            { 'S', 'E' },
-        };
-
-        private static readonly Dictionary<char, char> RightTurns = new()
-        {
-            { 'E', 'S' },
-            { 'S', 'W' },
-            { 'W', 'N' },
-            { 'N', 'E' },
-        };
-
-
         public void Go(string instructions)
         {
             foreach (var instruction in instructions)
@@ -36,10 +19,42 @@
             switch (instruction)
             {
                 case 'L':
-                    _dir = LeftTurns[_dir];
+                    if (_dir == 'E')
+                    {
+                        _dir = 'N';
+                    }
+                    else if (_dir == 'N')
+                    {
+                        _dir = 'W';
+                    }
+                    else if (_dir == 'W')
+                    {
+                        _dir = 'S';
+                    }
+                    else if (_dir == 'S')
+                    {
+                        _dir = 'E';
+                    }
+
                     break;
                 case 'R':
-                    _dir = RightTurns[_dir];
+                    if (_dir == 'E')
+                    {
+                        _dir = 'S';
+                    }
+                    else if (_dir == 'S')
+                    {
+                        _dir = 'W';
+                    }
+                    else if (_dir == 'W')
+                    {
+                        _dir = 'N';
+                    }
+                    else if (_dir == 'N')
+                    {
+                        _dir = 'E';
+                    }
+                    
                     break;
                 case 'M':
                     if (_dir == 'E')
