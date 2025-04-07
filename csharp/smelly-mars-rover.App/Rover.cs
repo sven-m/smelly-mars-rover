@@ -27,45 +27,50 @@
 
         public void Go(string instructions)
         {
-            foreach (var command in instructions)
+            foreach (var instruction in instructions)
             {
-                switch (command)
-                {
-                    case 'L':
-                        _position._direction = LeftTurns[_position._direction];
-                        break;
-                    case 'R':
-                        _position._direction = RightTurns[_position._direction];
-                        break;
-                    case 'M':
-                        if (_position._direction == Direction.East)
-                        {
-                            _position._x++;
-                        }
+                Go(instruction);
+            }
+        }
 
-                        if (_position._direction == Direction.South)
-                        {
-                            _position._y--;
-                        }
+        private void Go(char instruction)
+        {
+            switch (instruction)
+            {
+                case 'L':
+                    _position._direction = LeftTurns[_position._direction];
+                    break;
+                case 'R':
+                    _position._direction = RightTurns[_position._direction];
+                    break;
+                case 'M':
+                    if (_position._direction == Direction.East)
+                    {
+                        _position._x++;
+                    }
 
-                        if (_position._direction == Direction.West)
-                        {
-                            _position._x--;
-                        }
+                    if (_position._direction == Direction.South)
+                    {
+                        _position._y--;
+                    }
 
-                        if (_position._direction == Direction.North)
-                        {
-                            _position._y++;
-                        }
+                    if (_position._direction == Direction.West)
+                    {
+                        _position._x--;
+                    }
 
-                        break;
-                }
+                    if (_position._direction == Direction.North)
+                    {
+                        _position._y++;
+                    }
+
+                    break;
             }
         }
 
         public string Position()
         {
-            return _position.ToString();
+            return $"{_position._x} {_position._y} {_position._direction.ToString()[0]}";
         }
     }
 }

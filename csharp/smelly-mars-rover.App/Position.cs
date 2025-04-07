@@ -10,10 +10,5 @@
         {
             return _x == other._x && _y == other._y && _direction == other._direction;
         }
-
-        public override string ToString()
-        {
-            return $"{_x} {_y} {_direction.ToString()[0]}";
-        }
     }
 }
