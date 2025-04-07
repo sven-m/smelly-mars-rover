@@ -2,7 +2,7 @@
 {
     public class Rover
     {
-        private static readonly Dictionary<Direction, Direction> LeftTurns = new Dictionary<Direction, Direction>
+        private static readonly Dictionary<Direction, Direction> LeftTurns = new()
         {
             { Direction.East, Direction.North },
             { Direction.North, Direction.West },
@@ -37,7 +37,28 @@
                     case 'R':
                         _position._direction = RightTurns[_position._direction];
                         break;
-                    case 'M': _position.MoveForward(); break;
+                    case 'M':
+                        if (_position._direction == Direction.East)
+                        {
+                            _position._x++;
+                        }
+
+                        if (_position._direction == Direction.South)
+                        {
+                            _position._y--;
+                        }
+
+                        if (_position._direction == Direction.West)
+                        {
+                            _position._x--;
+                        }
+
+                        if (_position._direction == Direction.North)
+                        {
+                            _position._y++;
+                        }
+
+                        break;
                 }
             }
         }

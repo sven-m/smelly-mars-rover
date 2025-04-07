@@ -2,8 +2,8 @@
 {
     public class Position(string initialPosition) : IEquatable<Position>
     {
-        private int _x = int.Parse(initialPosition.Split(' ')[0]);
-        private int _y = int.Parse(initialPosition.Split(' ')[1]);
+        public int _x = int.Parse(initialPosition.Split(' ')[0]);
+        public int _y = int.Parse(initialPosition.Split(' ')[1]);
         public Direction _direction = (initialPosition.Split(' ')[2]).Parse();
 
         public bool Equals(Position other)
@@ -14,14 +14,6 @@
         public override string ToString()
         {
             return $"{_x} {_y} {_direction.ToString()[0]}";
-        }
-
-        public void MoveForward()
-        {
-            if (_direction == Direction.East) { _x++; }
-            if (_direction == Direction.South) { _y--; }
-            if (_direction == Direction.West) { _x--; }
-            if (_direction == Direction.North) { _y++; }
         }
     }
 }
