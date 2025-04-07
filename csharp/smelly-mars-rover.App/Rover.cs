@@ -4,23 +4,22 @@
     {
         private int _x = int.Parse(initialPosition.Split(' ')[0]);
         private int _y = int.Parse(initialPosition.Split(' ')[1]);
-        private Direction _direction = (initialPosition.Split(' ')[2]).Parse();
         private char _dir = (initialPosition.Split(' ')[2])[0];
 
-        private static readonly Dictionary<Direction, Direction> LeftTurns = new()
+        private static readonly Dictionary<char, char> LeftTurns = new()
         {
-            { Direction.East, Direction.North },
-            { Direction.North, Direction.West },
-            { Direction.West, Direction.South },
-            { Direction.South, Direction.East },
+            { 'E', 'N' },
+            { 'N', 'W' },
+            { 'W', 'S' },
+            { 'S', 'E' },
         };
 
-        private static readonly Dictionary<Direction, Direction> RightTurns = new()
+        private static readonly Dictionary<char, char> RightTurns = new()
         {
-            { Direction.East, Direction.South },
-            { Direction.South, Direction.West },
-            { Direction.West, Direction.North },
-            { Direction.North, Direction.East },
+            { 'E', 'S' },
+            { 'S', 'W' },
+            { 'W', 'N' },
+            { 'N', 'E' },
         };
 
 
@@ -37,28 +36,28 @@
             switch (instruction)
             {
                 case 'L':
-                    _direction = LeftTurns[_direction];
+                    _dir = LeftTurns[_dir];
                     break;
                 case 'R':
-                    _direction = RightTurns[_direction];
+                    _dir = RightTurns[_dir];
                     break;
                 case 'M':
-                    if (_direction == Direction.East)
+                    if (_dir == 'E')
                     {
                         _x++;
                     }
 
-                    if (_direction == Direction.South)
+                    if (_dir == 'S')
                     {
                         _y--;
                     }
 
-                    if (_direction == Direction.West)
+                    if (_dir == 'W')
                     {
                         _x--;
                     }
 
-                    if (_direction == Direction.North)
+                    if (_dir == 'N')
                     {
                         _y++;
                     }
@@ -69,7 +68,7 @@
 
         public string Position()
         {
-            return $"{_x} {_y} {_direction.ToString()[0]}";
+            return $"{_x} {_y} {_dir}";
         }
     }
 }
