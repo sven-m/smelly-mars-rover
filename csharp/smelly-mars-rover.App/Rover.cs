@@ -1,7 +1,11 @@
 ﻿namespace smelly_mars_rover.App
 {
-    public class Rover
+    public class Rover(string initialPosition)
     {
+        private int _x = int.Parse(initialPosition.Split(' ')[0]);
+        private int _y = int.Parse(initialPosition.Split(' ')[1]);
+        private Direction _direction = (initialPosition.Split(' ')[2]).Parse();
+
         private static readonly Dictionary<Direction, Direction> LeftTurns = new()
         {
             { Direction.East, Direction.North },
@@ -18,12 +22,6 @@
             { Direction.North, Direction.East },
         };
 
-        private readonly Position _position;
-
-        public Rover(string startingPosition)
-        {
-            _position = new Position(startingPosition);
-        }
 
         public void Go(string instructions)
         {
@@ -38,30 +36,30 @@
             switch (instruction)
             {
                 case 'L':
-                    _position._direction = LeftTurns[_position._direction];
+                    _direction = LeftTurns[_direction];
                     break;
                 case 'R':
-                    _position._direction = RightTurns[_position._direction];
+                    _direction = RightTurns[_direction];
                     break;
                 case 'M':
-                    if (_position._direction == Direction.East)
+                    if (_direction == Direction.East)
                     {
-                        _position._x++;
+                        _x++;
                     }
 
-                    if (_position._direction == Direction.South)
+                    if (_direction == Direction.South)
                     {
-                        _position._y--;
+                        _y--;
                     }
 
-                    if (_position._direction == Direction.West)
+                    if (_direction == Direction.West)
                     {
-                        _position._x--;
+                        _x--;
                     }
 
-                    if (_position._direction == Direction.North)
+                    if (_direction == Direction.North)
                     {
-                        _position._y++;
+                        _y++;
                     }
 
                     break;
@@ -70,7 +68,7 @@
 
         public string Position()
         {
-            return $"{_position._x} {_position._y} {_position._direction.ToString()[0]}";
+            return $"{_x} {_y} {_direction.ToString()[0]}";
         }
     }
 }
