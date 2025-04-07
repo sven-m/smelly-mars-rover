@@ -49,6 +49,6 @@ public class MarsRoverShould
 
         rover.Go(instructions);
 
-        Assert.That(rover.Position(), Is.EqualTo(expectedOutput));
+        Assert.That(rover.Pos(), Is.EqualTo(expectedOutput));
     }
 }
