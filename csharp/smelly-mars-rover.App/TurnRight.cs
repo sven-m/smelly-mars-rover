@@ -4,7 +4,14 @@
     {
         public void ApplyTo(Position position)
         {
-            position.TurnRight();
+            Dictionary<Direction, Direction> rightTurns = new Dictionary<Direction, Direction>
+            {
+                { Direction.East, Direction.South },
+                { Direction.South, Direction.West },
+                { Direction.West, Direction.North },
+                { Direction.North, Direction.East },
+            };
+            position._direction = rightTurns[position._direction];
         }
     }
 }

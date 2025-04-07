@@ -16,18 +16,6 @@
             return $"{_x} {_y} {_direction.ToString()[0]}";
         }
 
-        public void TurnRight()
-        {
-            Dictionary<Direction, Direction> rightTurns = new Dictionary<Direction, Direction>
-            {
-                { Direction.East, Direction.South },
-                { Direction.South, Direction.West },
-                { Direction.West, Direction.North },
-                { Direction.North, Direction.East },
-            };
-            _direction = rightTurns[_direction];
-        }
-
         public void MoveForward()
         {
             if (_direction == Direction.East) { _x++; }
