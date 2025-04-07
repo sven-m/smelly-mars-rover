@@ -1,7 +1,6 @@
 ﻿//----------------
 //Test Input: 1
 //----------------
-//5 5  Top Right corner of the grid
 //1 2 N Position and direction of the landed rover
 //LMLMLMLMM sequence of commands for the rover
 //----------------
@@ -12,7 +11,6 @@
 //----------------
 //Test Input: 2
 //----------------
-//5 5 - Top Right corner of the grid
 //3 3 E - Position and direction of the landed rover
 //MMRMMRMRRM - sequence of commands for the rover
 //
