@@ -5,6 +5,7 @@
         private int _x = int.Parse(initialPosition.Split(' ')[0]);
         private int _y = int.Parse(initialPosition.Split(' ')[1]);
         private Direction _direction = (initialPosition.Split(' ')[2]).Parse();
+        private char _dir = (initialPosition.Split(' ')[2])[0];
 
         private static readonly Dictionary<Direction, Direction> LeftTurns = new()
         {
