@@ -2,6 +2,14 @@
 {
     public class Rover
     {
+        private static readonly Dictionary<Direction, Direction> LeftTurns = new Dictionary<Direction, Direction>
+        {
+            { Direction.East, Direction.North },
+            { Direction.North, Direction.West },
+            { Direction.West, Direction.South },
+            { Direction.South, Direction.East },
+        };
+
         private readonly Position _position;
 
         public Rover(string startingPosition)
@@ -15,7 +23,9 @@
             {
                 switch (command)
                 {
-                    case 'L': _position.TurnLeft(); break;
+                    case 'L':
+                        _position._direction = LeftTurns[_position._direction];
+                        break;
                     case 'R': _position.TurnRight(); break;
                     case 'M': _position.MoveForward(); break;
                 }
