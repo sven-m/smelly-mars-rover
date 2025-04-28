@@ -39,12 +39,9 @@ NASA can send the following commands to the rover:
 
 The input consists of:
 
-1. **First line**: Two integers specifying the **upper-right coordinates** of the plateau.  
-   (The lower-left coordinates are assumed to be `(0, 0)`.)
+1. **First parameter**: The rover’s **starting position**: two integers and a letter (e.g., `1 2 N`).
 
-2. **Second line**: The rover’s **starting position**: two integers and a letter (e.g., `1 2 N`).
-
-3. **Third line**: A string of **movement instructions** (e.g., `LMLMLMLMM`).
+2. **Second parameter**: A string of **movement instructions** (e.g., `LMLMLMLMM`). 
 
 The rover processes all instructions in sequence.
 
