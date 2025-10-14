@@ -1,7 +1,7 @@
 class RoverState {
     var latitude: Int = 0
     var longitude: Int = 0
-    var heading: Character = "N"
+    var bearing: Character = "N"
 }
 
 class Rover {
@@ -12,7 +12,7 @@ class Rover {
         if configurationComponents.count >= 3 {
             state.latitude = Int(configurationComponents[0]) ?? 0
             state.longitude = Int(configurationComponents[1]) ?? 0
-            state.heading = configurationComponents[2].first ?? "N"
+            state.bearing = configurationComponents[2].first ?? "N"
         }
     }
     
@@ -20,33 +20,33 @@ class Rover {
         for c in cms {
             switch c {
             case "L":
-                switch state.heading {
+                switch state.bearing {
                 case "E":
-                    state.heading = "N"
+                    state.bearing = "N"
                 case "N":
-                    state.heading = "W"
+                    state.bearing = "W"
                 case "W":
-                    state.heading = "S"
+                    state.bearing = "S"
                 case "S":
-                    state.heading = "E"
+                    state.bearing = "E"
                 default:
                     break
                 }
             case "R":
-                switch state.heading {
+                switch state.bearing {
                 case "E":
-                    state.heading = "S"
+                    state.bearing = "S"
                 case "S":
-                    state.heading = "W"
+                    state.bearing = "W"
                 case "W":
-                    state.heading = "N"
+                    state.bearing = "N"
                 case "N":
-                    state.heading = "E"
+                    state.bearing = "E"
                 default:
                     break
                 }
             case "M":
-                switch state.heading {
+                switch state.bearing {
                 case "E":
                     state.latitude += 1
                 case "S":
@@ -65,6 +65,6 @@ class Rover {
     }
     
     func positionAndBearing() -> String {
-        return "\(state.latitude) \(state.longitude) \(state.heading)"
+        return "\(state.latitude) \(state.longitude) \(state.bearing)"
     }
 }
