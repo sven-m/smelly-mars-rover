@@ -9,6 +9,7 @@ class RoverState {
 
     static let bearingNorth: Character = "N"
     static let bearingWest: Character = "W"
+    static let bearingSouth: Character = "S"
 }
 
 class Rover {
@@ -33,8 +34,8 @@ class Rover {
                 case RoverState.bearingNorth:
                     state.bearing = RoverState.bearingWest
                 case RoverState.bearingWest:
-                    state.bearing = "S"
-                case "S":
+                    state.bearing = RoverState.bearingSouth
+                case RoverState.bearingSouth:
                     state.bearing = "E"
                 default:
                     break
@@ -42,8 +43,8 @@ class Rover {
             case "R":
                 switch state.bearing {
                 case "E":
-                    state.bearing = "S"
-                case "S":
+                    state.bearing = RoverState.bearingSouth
+                case RoverState.bearingSouth:
                     state.bearing = RoverState.bearingWest
                 case RoverState.bearingWest:
                     state.bearing = RoverState.bearingNorth
@@ -56,7 +57,7 @@ class Rover {
                 switch state.bearing {
                 case "E":
                     state.latitude += 1
-                case "S":
+                case RoverState.bearingSouth:
                     state.longitude -= 1
                 case RoverState.bearingWest:
                     state.latitude -= 1
