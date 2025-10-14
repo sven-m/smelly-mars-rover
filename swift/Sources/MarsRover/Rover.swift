@@ -18,6 +18,7 @@ class Rover {
 
     static let leftTurn: Character = "L"
     static let rightTurn: Character = "R"
+    static let forwardStep: Character = "M"
 
     init(startConfiguration: String = "") {
         let configurationComponents = startConfiguration.split(separator: " ")
@@ -57,7 +58,7 @@ class Rover {
                 default:
                     break
                 }
-            case "M":
+            case Rover.forwardStep:
                 switch state.bearing {
                 case RoverState.bearingEast:
                     state.latitude += 1
