@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Remove dead code
+- [x] Remove dead code
 - [ ] Improve code formatting
 - [ ] Improve names of all symbols
 - [ ] Remove all magic numbers and strings
