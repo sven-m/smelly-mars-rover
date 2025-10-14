@@ -1,3 +1,24 @@
+struct Rover {
+    private(set) var configuration: Configuration
+
+    init(startingConfiguration: Configuration = .init()) {
+        self.configuration = startingConfiguration
+    }
+    
+    mutating func go(moves: [Move]) {
+        for move in moves {
+            switch move {
+            case .leftTurn:
+                configuration.bearing = configuration.bearing.left
+            case .rightTurn:
+                configuration.bearing = configuration.bearing.right
+            case .forwardStep:
+                configuration.position = configuration.positionAhead
+            }
+        }
+    }
+}
+
 struct Configuration: Equatable {
     var position: Position = .init()
     var bearing: Bearing = .default
@@ -46,23 +67,3 @@ enum Move {
     case forwardStep
 }
 
-struct Rover {
-    private(set) var configuration: Configuration
-
-    init(startingConfiguration: Configuration = .init()) {
-        self.configuration = startingConfiguration
-    }
-    
-    mutating func go(moves: [Move]) {
-        for move in moves {
-            switch move {
-            case .leftTurn:
-                configuration.bearing = configuration.bearing.left
-            case .rightTurn:
-                configuration.bearing = configuration.bearing.right
-            case .forwardStep:
-                configuration.position = configuration.positionAhead
-            }
-        }
-    }
-}
