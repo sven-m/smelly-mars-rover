@@ -1,7 +1,7 @@
 # TODO
 
 - [x] Remove dead code
-- [ ] Improve code formatting
+- [x] Improve code formatting
 - [ ] Improve names of all symbols
 - [ ] Remove all magic numbers and strings
 - [ ] Use value types by default
