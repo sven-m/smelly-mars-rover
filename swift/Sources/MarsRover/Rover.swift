@@ -14,7 +14,7 @@ struct RoverState {
 }
 
 struct Rover {
-    private var state = RoverState()
+    private var state: RoverState
 
     static let leftTurn: Character = "L"
     static let rightTurn: Character = "R"
@@ -22,10 +22,11 @@ struct Rover {
 
     init(startConfiguration: String = "") {
         let configurationComponents = startConfiguration.split(separator: " ")
+        state = .init()
         if configurationComponents.count >= 3 {
-            state.latitude = Int(configurationComponents[0]) ?? RoverState.defaultLatitude
-            state.longitude = Int(configurationComponents[1]) ?? RoverState.defaultLongitude
-            state.bearing = configurationComponents[2].first ?? RoverState.defaultBearing
+            state.latitude = Int(configurationComponents[0]) ?? state.latitude
+            state.longitude = Int(configurationComponents[1]) ?? state.longitude
+            state.bearing = configurationComponents[2].first ?? state.bearing
         }
     }
     
