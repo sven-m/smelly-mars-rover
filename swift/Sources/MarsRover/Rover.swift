@@ -7,8 +7,8 @@ class RoverState {
 class Rover {
     private var state = RoverState()
     
-    init(startingPosition: String = "") {
-        let s = startingPosition.split(separator: " ")
+    init(startConfiguration: String = "") {
+        let s = startConfiguration.split(separator: " ")
         if s.count >= 3 {
             state.latitude = Int(s[0]) ?? 0
             state.longitude = Int(s[1]) ?? 0
