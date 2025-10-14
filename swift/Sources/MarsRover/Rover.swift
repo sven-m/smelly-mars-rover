@@ -69,13 +69,13 @@ struct Rover {
             case .forwardStep:
                 switch configuration.bearing {
                 case .east:
-                    configuration.position.latitude += 1
-                case .south:
-                    configuration.position.longitude -= 1
-                case .west:
-                    configuration.position.latitude -= 1
-                case .north:
                     configuration.position.longitude += 1
+                case .south:
+                    configuration.position.latitude -= 1
+                case .west:
+                    configuration.position.longitude -= 1
+                case .north:
+                    configuration.position.latitude += 1
                 }
             }
         }

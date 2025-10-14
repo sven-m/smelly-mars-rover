@@ -5,72 +5,72 @@ final class RoverTests: XCTestCase {
     func testRoverMovements() {
         let testCases: [(Configuration, [Move], Configuration)] = [
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
                 [],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
                 [.leftTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .west),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .west),
                 [.leftTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .south),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .south),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .south),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .south),
                 [.leftTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .east),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .east),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .east),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .east),
                 [.leftTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
                 [.rightTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .east),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .east),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .east),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .east),
                 [.rightTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .south),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .south),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .south),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .south),
                 [.rightTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .west),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .west),
                 [.rightTurn],
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
                 [.forwardStep],
-                Configuration(position: .init(latitude: 1, longitude: 3), bearing: .north),
+                Configuration(position: .init(latitude: 3, longitude: 1), bearing: .north),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .east),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .east),
                 [.forwardStep],
                 Configuration(position: .init(latitude: 2, longitude: 2), bearing: .east),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .south),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .south),
                 [.forwardStep],
                 Configuration(position: .init(latitude: 1, longitude: 1), bearing: .south),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .west),
                 [.forwardStep],
-                Configuration(position: .init(latitude: 0, longitude: 2), bearing: .west),
+                Configuration(position: .init(latitude: 2, longitude: 0), bearing: .west),
             ),
             (
-                Configuration(position: .init(latitude: 1, longitude: 2), bearing: .north),
+                Configuration(position: .init(latitude: 2, longitude: 1), bearing: .north),
                 [
                     .leftTurn,
                     .forwardStep,
@@ -82,7 +82,7 @@ final class RoverTests: XCTestCase {
                     .forwardStep,
                     .forwardStep,
                 ],
-                Configuration(position: .init(latitude: 1, longitude: 3), bearing: .north),
+                Configuration(position: .init(latitude: 3, longitude: 1), bearing: .north),
             ),
             (
                 Configuration(position: .init(latitude: 3, longitude: 3), bearing: .east),
@@ -98,7 +98,7 @@ final class RoverTests: XCTestCase {
                     .rightTurn,
                     .forwardStep,
                 ],
-                Configuration(position: .init(latitude: 5, longitude: 1), bearing: .east),
+                Configuration(position: .init(latitude: 1, longitude: 5), bearing: .east),
             )
         ]
         
