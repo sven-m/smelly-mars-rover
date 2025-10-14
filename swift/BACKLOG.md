@@ -10,6 +10,6 @@
 - [x] Use direction enum instead of Character
 - [x] Improve init interface
 - [ ] Improve go() interface
-- [ ] Improve positionAndBearing() interface
-- [ ] Use Position struct instead of two Ints
-- [ ] Use configuration struct for bearing and position
+- [x] Improve positionAndBearing() interface
+- [x] Use Position struct instead of two Ints
+- [x] Use configuration struct for bearing and position
