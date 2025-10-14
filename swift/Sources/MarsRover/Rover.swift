@@ -1,5 +1,5 @@
 class RoverState {
-    var xx: Int = 0
+    var latitude: Int = 0
     var yy: Int = 0
     var dd: Character = "N"
 }
@@ -10,7 +10,7 @@ class Rover {
     init(startingPosition: String = "") {
         let s = startingPosition.split(separator: " ")
         if s.count >= 3 {
-            state.xx = Int(s[0]) ?? 0
+            state.latitude = Int(s[0]) ?? 0
             state.yy = Int(s[1]) ?? 0
             state.dd = s[2].first ?? "N"
         }
@@ -48,11 +48,11 @@ class Rover {
             case "M":
                 switch state.dd {
                 case "E":
-                    state.xx += 1
+                    state.latitude += 1
                 case "S":
                     state.yy -= 1
                 case "W":
-                    state.xx -= 1
+                    state.latitude -= 1
                 case "N":
                     state.yy += 1
                 default:
@@ -65,6 +65,6 @@ class Rover {
     }
     
     func pos() -> String {
-        return "\(state.xx) \(state.yy) \(state.dd)"
+        return "\(state.latitude) \(state.yy) \(state.dd)"
     }
 }
