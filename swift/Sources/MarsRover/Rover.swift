@@ -8,11 +8,11 @@ class Rover {
     private var state = RoverState()
     
     init(startConfiguration: String = "") {
-        let s = startConfiguration.split(separator: " ")
-        if s.count >= 3 {
-            state.latitude = Int(s[0]) ?? 0
-            state.longitude = Int(s[1]) ?? 0
-            state.heading = s[2].first ?? "N"
+        let configurationComponents = startConfiguration.split(separator: " ")
+        if configurationComponents.count >= 3 {
+            state.latitude = Int(configurationComponents[0]) ?? 0
+            state.longitude = Int(configurationComponents[1]) ?? 0
+            state.heading = configurationComponents[2].first ?? "N"
         }
     }
     
