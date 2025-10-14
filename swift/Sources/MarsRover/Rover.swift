@@ -64,7 +64,7 @@ class Rover {
         }
     }
     
-    func pos() -> String {
+    func positionAndBearing() -> String {
         return "\(state.latitude) \(state.longitude) \(state.heading)"
     }
 }
