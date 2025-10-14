@@ -1,7 +1,7 @@
 class RoverState {
     var latitude: Int = 0
     var longitude: Int = 0
-    var dd: Character = "N"
+    var heading: Character = "N"
 }
 
 class Rover {
@@ -12,7 +12,7 @@ class Rover {
         if s.count >= 3 {
             state.latitude = Int(s[0]) ?? 0
             state.longitude = Int(s[1]) ?? 0
-            state.dd = s[2].first ?? "N"
+            state.heading = s[2].first ?? "N"
         }
     }
     
@@ -20,33 +20,33 @@ class Rover {
         for c in cms {
             switch c {
             case "L":
-                switch state.dd {
+                switch state.heading {
                 case "E":
-                    state.dd = "N"
+                    state.heading = "N"
                 case "N":
-                    state.dd = "W"
+                    state.heading = "W"
                 case "W":
-                    state.dd = "S"
+                    state.heading = "S"
                 case "S":
-                    state.dd = "E"
+                    state.heading = "E"
                 default:
                     break
                 }
             case "R":
-                switch state.dd {
+                switch state.heading {
                 case "E":
-                    state.dd = "S"
+                    state.heading = "S"
                 case "S":
-                    state.dd = "W"
+                    state.heading = "W"
                 case "W":
-                    state.dd = "N"
+                    state.heading = "N"
                 case "N":
-                    state.dd = "E"
+                    state.heading = "E"
                 default:
                     break
                 }
             case "M":
-                switch state.dd {
+                switch state.heading {
                 case "E":
                     state.latitude += 1
                 case "S":
@@ -65,6 +65,6 @@ class Rover {
     }
     
     func pos() -> String {
-        return "\(state.latitude) \(state.longitude) \(state.dd)"
+        return "\(state.latitude) \(state.longitude) \(state.heading)"
     }
 }
