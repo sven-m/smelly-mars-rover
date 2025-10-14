@@ -1,9 +1,9 @@
-struct Configuration {
+struct Configuration: Equatable {
     var position: Position
     var bearing: Bearing
 }
 
-struct Position {
+struct Position: Equatable {
     var latitude = 0
     var longitude = 0
 }
@@ -79,9 +79,5 @@ struct Rover {
                 break
             }
         }
-    }
-    
-    func positionAndBearing() -> String {
-        return "\(configuration.position.latitude) \(configuration.position.longitude) \(configuration.bearing)"
     }
 }
