@@ -1,4 +1,4 @@
-class RoverState {
+struct RoverState {
     var latitude = defaultLatitude
     var longitude = defaultLongitude
     var bearing = defaultBearing
@@ -13,7 +13,7 @@ class RoverState {
     static let bearingEast: Character = "E"
 }
 
-class Rover {
+struct Rover {
     private var state = RoverState()
 
     static let leftTurn: Character = "L"
@@ -29,7 +29,7 @@ class Rover {
         }
     }
     
-    func go(commands: String) {
+    mutating func go(commands: String) {
         for command in commands {
             switch command {
             case Rover.leftTurn:
