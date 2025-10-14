@@ -51,32 +51,53 @@ final class RoverTests: XCTestCase {
             ),
             (
                 "1 2 \(RoverState.bearingNorth)",
-                "M",
+                String(Rover.forwardStep),
                 "1 3 \(RoverState.bearingNorth)"
             ),
             (
                 "1 2 \(RoverState.bearingEast)",
-                "M",
+                String(Rover.forwardStep),
                 "2 2 \(RoverState.bearingEast)"
             ),
             (
                 "1 2 \(RoverState.bearingSouth)",
-                "M",
+                String(Rover.forwardStep),
                 "1 1 \(RoverState.bearingSouth)"
             ),
             (
                 "1 2 \(RoverState.bearingWest)",
-                "M",
+                String(Rover.forwardStep),
                 "0 2 \(RoverState.bearingWest)"
             ),
             (
                 "1 2 \(RoverState.bearingNorth)",
-                "LMLMLMLMM",
+                [
+                    Rover.leftTurn,
+                    Rover.forwardStep,
+                    Rover.leftTurn,
+                    Rover.forwardStep,
+                    Rover.leftTurn,
+                    Rover.forwardStep,
+                    Rover.leftTurn,
+                    Rover.forwardStep,
+                    Rover.forwardStep,
+                ].map { String($0) }.joined(),
                 "1 3 \(RoverState.bearingNorth)"
             ),
             (
                 "3 3 \(RoverState.bearingEast)",
-                "MMRMMRMRRM",
+                [
+                    Rover.forwardStep,
+                    Rover.forwardStep,
+                    Rover.rightTurn,
+                    Rover.forwardStep,
+                    Rover.forwardStep,
+                    Rover.rightTurn,
+                    Rover.forwardStep,
+                    Rover.rightTurn,
+                    Rover.rightTurn,
+                    Rover.forwardStep,
+                ].map { String($0) }.joined(),
                 "5 1 \(RoverState.bearingEast)"
             )
         ]
