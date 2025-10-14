@@ -20,11 +20,44 @@ class Rover {
         for c in cms {
             switch c {
             case "L":
-                switch rs.dd { case "E": rs.dd = "N" case "N": rs.dd = "W" case "W": rs.dd = "S" case "S": rs.dd = "E" default: break }
+                switch rs.dd {
+                case "E":
+                    rs.dd = "N"
+                case "N":
+                    rs.dd = "W"
+                case "W":
+                    rs.dd = "S"
+                case "S":
+                    rs.dd = "E"
+                default:
+                    break
+                }
             case "R":
-                switch rs.dd { case "E": rs.dd = "S" case "S": rs.dd = "W" case "W": rs.dd = "N" case "N": rs.dd = "E" default: break }
+                switch rs.dd {
+                case "E":
+                    rs.dd = "S"
+                case "S":
+                    rs.dd = "W"
+                case "W":
+                    rs.dd = "N"
+                case "N":
+                    rs.dd = "E"
+                default:
+                    break
+                }
             case "M":
-                switch rs.dd { case "E": rs.xx += 1 case "S": rs.yy -= 1 case "W": rs.xx -= 1 case "N": rs.yy += 1 default: break }
+                switch rs.dd {
+                case "E":
+                    rs.xx += 1
+                case "S":
+                    rs.yy -= 1
+                case "W":
+                    rs.xx -= 1
+                case "N":
+                    rs.yy += 1
+                default:
+                    break
+                }
             default:
                 break
             }
