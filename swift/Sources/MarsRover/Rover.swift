@@ -17,6 +17,12 @@ enum Bearing {
     static let `default` = Self.north
 }
 
+enum Move {
+    case leftTurn
+    case rightTurn
+    case forwardStep
+}
+
 extension Bearing: CustomStringConvertible {
     var description: String {
         switch self {
@@ -31,18 +37,14 @@ extension Bearing: CustomStringConvertible {
 struct Rover {
     private(set) var configuration: Configuration
 
-    static let leftTurn: Character = "L"
-    static let rightTurn: Character = "R"
-    static let forwardStep: Character = "M"
-
     init(startingConfiguration: Configuration) {
         self.configuration = startingConfiguration
     }
     
-    mutating func go(commands: String) {
-        for command in commands {
-            switch command {
-            case Rover.leftTurn:
+    mutating func go(moves: [Move]) {
+        for move in moves {
+            switch move {
+            case .leftTurn:
                 switch configuration.bearing {
                 case .east:
                     configuration.bearing = .north
@@ -53,7 +55,7 @@ struct Rover {
                 case .south:
                     configuration.bearing = .east
                 }
-            case Rover.rightTurn:
+            case .rightTurn:
                 switch configuration.bearing {
                 case .east:
                     configuration.bearing = .south
@@ -64,7 +66,7 @@ struct Rover {
                 case .north:
                     configuration.bearing = .east
                 }
-            case Rover.forwardStep:
+            case .forwardStep:
                 switch configuration.bearing {
                 case .east:
                     configuration.position.latitude += 1
@@ -75,8 +77,6 @@ struct Rover {
                 case .north:
                     configuration.position.longitude += 1
                 }
-            default:
-                break
             }
         }
     }
