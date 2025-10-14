@@ -5,5 +5,6 @@
 - [x] Improve names of all symbols
 - [x] Remove all magic numbers and strings
 - [x] Use value types by default
+- [ ] Simplify initialization of Rover
 - [ ] Use direction enum instead of Character
 - [ ] Use Position struct instead of two Ints
