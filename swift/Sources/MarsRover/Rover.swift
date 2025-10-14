@@ -20,14 +20,8 @@ struct Rover {
     static let rightTurn: Character = "R"
     static let forwardStep: Character = "M"
 
-    init(startConfiguration: String = "") {
-        let configurationComponents = startConfiguration.split(separator: " ")
-        state = .init()
-        if configurationComponents.count >= 3 {
-            state.latitude = Int(configurationComponents[0]) ?? state.latitude
-            state.longitude = Int(configurationComponents[1]) ?? state.longitude
-            state.bearing = configurationComponents[2].first ?? state.bearing
-        }
+    init(startingState: RoverState) {
+        self.state = startingState
     }
     
     mutating func go(commands: String) {

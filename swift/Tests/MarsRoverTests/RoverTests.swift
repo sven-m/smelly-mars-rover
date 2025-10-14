@@ -3,74 +3,74 @@ import XCTest
 
 final class RoverTests: XCTestCase {
     func testRoverMovements() {
-        let testCases: [(String, String, String)] = [
+        let testCases: [(RoverState, String, String)] = [
             (
-                "1 2 \(RoverState.bearingNorth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingNorth),
                 " ",
                 "1 2 \(RoverState.bearingNorth)"
             ),
             (
-                "1 2 \(RoverState.bearingNorth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingNorth),
                 String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingWest)"
             ),
             (
-                "1 2 \(RoverState.bearingWest)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingWest),
                 String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingSouth)"
             ),
             (
-                "1 2 \(RoverState.bearingSouth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingSouth),
                 String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingEast)"
             ),
             (
-                "1 2 \(RoverState.bearingEast)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingEast),
                 String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingNorth)"
             ),
             (
-                "1 2 \(RoverState.bearingNorth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingNorth),
                 String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingEast)"
             ),
             (
-                "1 2 \(RoverState.bearingEast)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingEast),
                 String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingSouth)"
             ),
             (
-                "1 2 \(RoverState.bearingSouth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingSouth),
                 String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingWest)"
             ),
             (
-                "1 2 \(RoverState.bearingWest)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingWest),
                 String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingNorth)"
             ),
             (
-                "1 2 \(RoverState.bearingNorth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingNorth),
                 String(Rover.forwardStep),
                 "1 3 \(RoverState.bearingNorth)"
             ),
             (
-                "1 2 \(RoverState.bearingEast)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingEast),
                 String(Rover.forwardStep),
                 "2 2 \(RoverState.bearingEast)"
             ),
             (
-                "1 2 \(RoverState.bearingSouth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingSouth),
                 String(Rover.forwardStep),
                 "1 1 \(RoverState.bearingSouth)"
             ),
             (
-                "1 2 \(RoverState.bearingWest)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingWest),
                 String(Rover.forwardStep),
                 "0 2 \(RoverState.bearingWest)"
             ),
             (
-                "1 2 \(RoverState.bearingNorth)",
+                .init(latitude: 1, longitude: 2, bearing: RoverState.bearingNorth),
                 [
                     Rover.leftTurn,
                     Rover.forwardStep,
@@ -85,7 +85,7 @@ final class RoverTests: XCTestCase {
                 "1 3 \(RoverState.bearingNorth)"
             ),
             (
-                "3 3 \(RoverState.bearingEast)",
+                .init(latitude: 3, longitude: 3, bearing: RoverState.bearingEast),
                 [
                     Rover.forwardStep,
                     Rover.forwardStep,
@@ -102,10 +102,10 @@ final class RoverTests: XCTestCase {
             )
         ]
         
-        for (startingPosition, instructions, expectedOutput) in testCases {
-            var rover = Rover(startConfiguration: startingPosition)
+        for (startingState, instructions, expectedOutput) in testCases {
+            var rover = Rover(startingState: startingState)
             rover.go(commands: instructions)
-            XCTAssertEqual(rover.positionAndBearing(), expectedOutput, "Failed for starting position: \(startingPosition), instructions: \(instructions)")
+            XCTAssertEqual(rover.positionAndBearing(), expectedOutput, "Failed for starting position: \(startingState), instructions: \(instructions)")
         }
     }
 }
