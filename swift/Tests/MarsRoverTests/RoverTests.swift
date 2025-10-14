@@ -3,7 +3,7 @@ import XCTest
 
 final class RoverTests: XCTestCase {
     func testRoverMovements() {
-        let testCases = [
+        let testCases: [(String, String, String)] = [
             (
                 "1 2 \(RoverState.bearingNorth)",
                 " ",
@@ -31,22 +31,22 @@ final class RoverTests: XCTestCase {
             ),
             (
                 "1 2 \(RoverState.bearingNorth)",
-                "R",
+                String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingEast)"
             ),
             (
                 "1 2 \(RoverState.bearingEast)",
-                "R",
+                String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingSouth)"
             ),
             (
                 "1 2 \(RoverState.bearingSouth)",
-                "R",
+                String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingWest)"
             ),
             (
                 "1 2 \(RoverState.bearingWest)",
-                "R",
+                String(Rover.rightTurn),
                 "1 2 \(RoverState.bearingNorth)"
             ),
             (

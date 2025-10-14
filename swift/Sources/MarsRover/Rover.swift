@@ -17,6 +17,7 @@ class Rover {
     private var state = RoverState()
 
     static let leftTurn: Character = "L"
+    static let rightTurn: Character = "R"
 
     init(startConfiguration: String = "") {
         let configurationComponents = startConfiguration.split(separator: " ")
@@ -43,7 +44,7 @@ class Rover {
                 default:
                     break
                 }
-            case "R":
+            case Rover.rightTurn:
                 switch state.bearing {
                 case RoverState.bearingEast:
                     state.bearing = RoverState.bearingSouth
