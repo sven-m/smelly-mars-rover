@@ -5,12 +5,25 @@ struct RoverState {
 
     static let defaultLatitude: Int = 0
     static let defaultLongitude: Int = 0
-    static let defaultBearing = RoverState.bearingNorth
+    static let defaultBearing = Bearing.north
+}
 
-    static let bearingNorth: Character = "N"
-    static let bearingWest: Character = "W"
-    static let bearingSouth: Character = "S"
-    static let bearingEast: Character = "E"
+enum Bearing {
+    case north
+    case west
+    case south
+    case east
+}
+
+extension Bearing: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .north: "N"
+        case .west: "W"
+        case .south: "S"
+        case .east: "E"
+        }
+    }
 }
 
 struct Rover {
@@ -29,42 +42,36 @@ struct Rover {
             switch command {
             case Rover.leftTurn:
                 switch state.bearing {
-                case RoverState.bearingEast:
-                    state.bearing = RoverState.bearingNorth
-                case RoverState.bearingNorth:
-                    state.bearing = RoverState.bearingWest
-                case RoverState.bearingWest:
-                    state.bearing = RoverState.bearingSouth
-                case RoverState.bearingSouth:
-                    state.bearing = RoverState.bearingEast
-                default:
-                    break
+                case .east:
+                    state.bearing = .north
+                case .north:
+                    state.bearing = .west
+                case .west:
+                    state.bearing = .south
+                case .south:
+                    state.bearing = .east
                 }
             case Rover.rightTurn:
                 switch state.bearing {
-                case RoverState.bearingEast:
-                    state.bearing = RoverState.bearingSouth
-                case RoverState.bearingSouth:
-                    state.bearing = RoverState.bearingWest
-                case RoverState.bearingWest:
-                    state.bearing = RoverState.bearingNorth
-                case RoverState.bearingNorth:
-                    state.bearing = RoverState.bearingEast
-                default:
-                    break
+                case .east:
+                    state.bearing = .south
+                case .south:
+                    state.bearing = .west
+                case .west:
+                    state.bearing = .north
+                case .north:
+                    state.bearing = .east
                 }
             case Rover.forwardStep:
                 switch state.bearing {
-                case RoverState.bearingEast:
+                case .east:
                     state.latitude += 1
-                case RoverState.bearingSouth:
+                case .south:
                     state.longitude -= 1
-                case RoverState.bearingWest:
+                case .west:
                     state.latitude -= 1
-                case RoverState.bearingNorth:
+                case .north:
                     state.longitude += 1
-                default:
-                    break
                 }
             default:
                 break
