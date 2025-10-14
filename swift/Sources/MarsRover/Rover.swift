@@ -1,11 +1,11 @@
-struct RoverState {
-    var latitude = defaultLatitude
-    var longitude = defaultLongitude
-    var bearing = defaultBearing
+struct Configuration {
+    var position: Position
+    var bearing: Bearing
+}
 
-    static let defaultLatitude: Int = 0
-    static let defaultLongitude: Int = 0
-    static let defaultBearing = Bearing.north
+struct Position {
+    var latitude = 0
+    var longitude = 0
 }
 
 enum Bearing {
@@ -13,6 +13,8 @@ enum Bearing {
     case west
     case south
     case east
+
+    static let `default` = Self.north
 }
 
 extension Bearing: CustomStringConvertible {
@@ -27,51 +29,51 @@ extension Bearing: CustomStringConvertible {
 }
 
 struct Rover {
-    private var state: RoverState
+    private(set) var configuration: Configuration
 
     static let leftTurn: Character = "L"
     static let rightTurn: Character = "R"
     static let forwardStep: Character = "M"
 
-    init(startingState: RoverState) {
-        self.state = startingState
+    init(startingConfiguration: Configuration) {
+        self.configuration = startingConfiguration
     }
     
     mutating func go(commands: String) {
         for command in commands {
             switch command {
             case Rover.leftTurn:
-                switch state.bearing {
+                switch configuration.bearing {
                 case .east:
-                    state.bearing = .north
+                    configuration.bearing = .north
                 case .north:
-                    state.bearing = .west
+                    configuration.bearing = .west
                 case .west:
-                    state.bearing = .south
+                    configuration.bearing = .south
                 case .south:
-                    state.bearing = .east
+                    configuration.bearing = .east
                 }
             case Rover.rightTurn:
-                switch state.bearing {
+                switch configuration.bearing {
                 case .east:
-                    state.bearing = .south
+                    configuration.bearing = .south
                 case .south:
-                    state.bearing = .west
+                    configuration.bearing = .west
                 case .west:
-                    state.bearing = .north
+                    configuration.bearing = .north
                 case .north:
-                    state.bearing = .east
+                    configuration.bearing = .east
                 }
             case Rover.forwardStep:
-                switch state.bearing {
+                switch configuration.bearing {
                 case .east:
-                    state.latitude += 1
+                    configuration.position.latitude += 1
                 case .south:
-                    state.longitude -= 1
+                    configuration.position.longitude -= 1
                 case .west:
-                    state.latitude -= 1
+                    configuration.position.latitude -= 1
                 case .north:
-                    state.longitude += 1
+                    configuration.position.longitude += 1
                 }
             default:
                 break
@@ -80,6 +82,6 @@ struct Rover {
     }
     
     func positionAndBearing() -> String {
-        return "\(state.latitude) \(state.longitude) \(state.bearing)"
+        return "\(configuration.position.latitude) \(configuration.position.longitude) \(configuration.bearing)"
     }
 }
