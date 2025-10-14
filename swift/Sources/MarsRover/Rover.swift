@@ -1,10 +1,11 @@
 class RoverState {
     var latitude = defaultLatitude
     var longitude = defaultLongitude
-    var bearing: Character = "N"
+    var bearing = defaultBearing
 
     static let defaultLatitude: Int = 0
     static let defaultLongitude: Int = 0
+    static let defaultBearing: Character = "N"
 }
 
 class Rover {
@@ -15,7 +16,7 @@ class Rover {
         if configurationComponents.count >= 3 {
             state.latitude = Int(configurationComponents[0]) ?? RoverState.defaultLatitude
             state.longitude = Int(configurationComponents[1]) ?? RoverState.defaultLongitude
-            state.bearing = configurationComponents[2].first ?? "N"
+            state.bearing = configurationComponents[2].first ?? RoverState.defaultBearing
         }
     }
     
