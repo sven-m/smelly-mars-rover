@@ -6,7 +6,7 @@
 - [x] Remove all magic numbers and strings
 - [x] Use value types by default
 - [x] Simplify initialization of Rover
-- [ ] Change Rover init parameter to RoverState
+- [x] Change Rover init parameter to RoverState
 - [ ] Use direction enum instead of Character
 - [ ] Use Position struct instead of two Ints
 - [ ] Use configuration struct for bearing and position
