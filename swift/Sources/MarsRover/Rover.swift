@@ -1,6 +1,6 @@
 struct Configuration: Equatable {
-    var position: Position
-    var bearing: Bearing
+    var position: Position = .init()
+    var bearing: Bearing = .default
 }
 
 struct Position: Equatable {
@@ -14,6 +14,19 @@ enum Bearing {
     case south
     case east
 
+    var left: Self {
+        switch self {
+        case .north: .west
+        case .west: .south
+        case .south: .east
+        case .east: .north
+        }
+    }
+
+    var right: Self {
+        left.left.left
+    }
+
     static let `default` = Self.north
 }
 
@@ -23,21 +36,10 @@ enum Move {
     case forwardStep
 }
 
-extension Bearing: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .north: "N"
-        case .west: "W"
-        case .south: "S"
-        case .east: "E"
-        }
-    }
-}
-
 struct Rover {
     private(set) var configuration: Configuration
 
-    init(startingConfiguration: Configuration) {
+    init(startingConfiguration: Configuration = .init()) {
         self.configuration = startingConfiguration
     }
     
@@ -45,27 +47,9 @@ struct Rover {
         for move in moves {
             switch move {
             case .leftTurn:
-                switch configuration.bearing {
-                case .east:
-                    configuration.bearing = .north
-                case .north:
-                    configuration.bearing = .west
-                case .west:
-                    configuration.bearing = .south
-                case .south:
-                    configuration.bearing = .east
-                }
+                configuration.bearing = configuration.bearing.left
             case .rightTurn:
-                switch configuration.bearing {
-                case .east:
-                    configuration.bearing = .south
-                case .south:
-                    configuration.bearing = .west
-                case .west:
-                    configuration.bearing = .north
-                case .north:
-                    configuration.bearing = .east
-                }
+                configuration.bearing = configuration.bearing.right
             case .forwardStep:
                 switch configuration.bearing {
                 case .east:
