@@ -2,7 +2,7 @@
 
 - [x] Remove dead code
 - [x] Improve code formatting
-- [ ] Improve names of all symbols
+- [x] Improve names of all symbols
 - [ ] Remove all magic numbers and strings
 - [ ] Use value types by default
 - [ ] Use direction enum instead of Character
