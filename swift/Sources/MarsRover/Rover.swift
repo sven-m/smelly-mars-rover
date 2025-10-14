@@ -17,8 +17,8 @@ class Rover {
     }
     
     func go(commands: String) {
-        for c in commands {
-            switch c {
+        for command in commands {
+            switch command {
             case "L":
                 switch state.bearing {
                 case "E":
