@@ -5,14 +5,14 @@ class RoverState {
 }
 
 class Rover {
-    private var rs = RoverState()
+    private var state = RoverState()
     
     init(startingPosition: String = "") {
         let s = startingPosition.split(separator: " ")
         if s.count >= 3 {
-            rs.xx = Int(s[0]) ?? 0
-            rs.yy = Int(s[1]) ?? 0
-            rs.dd = s[2].first ?? "N"
+            state.xx = Int(s[0]) ?? 0
+            state.yy = Int(s[1]) ?? 0
+            state.dd = s[2].first ?? "N"
         }
     }
     
@@ -20,41 +20,41 @@ class Rover {
         for c in cms {
             switch c {
             case "L":
-                switch rs.dd {
+                switch state.dd {
                 case "E":
-                    rs.dd = "N"
+                    state.dd = "N"
                 case "N":
-                    rs.dd = "W"
+                    state.dd = "W"
                 case "W":
-                    rs.dd = "S"
+                    state.dd = "S"
                 case "S":
-                    rs.dd = "E"
+                    state.dd = "E"
                 default:
                     break
                 }
             case "R":
-                switch rs.dd {
+                switch state.dd {
                 case "E":
-                    rs.dd = "S"
+                    state.dd = "S"
                 case "S":
-                    rs.dd = "W"
+                    state.dd = "W"
                 case "W":
-                    rs.dd = "N"
+                    state.dd = "N"
                 case "N":
-                    rs.dd = "E"
+                    state.dd = "E"
                 default:
                     break
                 }
             case "M":
-                switch rs.dd {
+                switch state.dd {
                 case "E":
-                    rs.xx += 1
+                    state.xx += 1
                 case "S":
-                    rs.yy -= 1
+                    state.yy -= 1
                 case "W":
-                    rs.xx -= 1
+                    state.xx -= 1
                 case "N":
-                    rs.yy += 1
+                    state.yy += 1
                 default:
                     break
                 }
@@ -65,6 +65,6 @@ class Rover {
     }
     
     func pos() -> String {
-        return "\(rs.xx) \(rs.yy) \(rs.dd)"
+        return "\(state.xx) \(state.yy) \(state.dd)"
     }
 }
