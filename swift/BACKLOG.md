@@ -11,7 +11,7 @@
 - [x] Improve init interface
 - [x] Improve go() interface
 - [x] Move left and right turns into Bearing
-- [ ] Move forward step into Configuration
+- [x] Move forward step into Configuration
 - [x] Improve positionAndBearing() interface
 - [x] Use Position struct instead of two Ints
 - [x] Use configuration struct for bearing and position
