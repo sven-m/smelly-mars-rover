@@ -16,8 +16,8 @@ class Rover {
         }
     }
     
-    func go(_ cms: String) {
-        for c in cms {
+    func go(commands: String) {
+        for c in commands {
             switch c {
             case "L":
                 switch state.bearing {
