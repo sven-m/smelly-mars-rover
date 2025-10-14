@@ -1,11 +1,21 @@
 struct Configuration: Equatable {
     var position: Position = .init()
     var bearing: Bearing = .default
+
+    var positionAhead: Position {
+        switch bearing {
+        case .north: .init(latitude: position.latitude + 1, longitude: position.longitude)
+        case .west: .init(latitude: position.latitude, longitude: position.longitude - 1)
+        case .south: .init(latitude: position.latitude - 1, longitude: position.longitude)
+        case .east: .init(latitude: position.latitude, longitude: position.longitude + 1)
+        }
+    }
 }
 
 struct Position: Equatable {
     var latitude = 0
     var longitude = 0
+
 }
 
 enum Bearing {
@@ -51,16 +61,7 @@ struct Rover {
             case .rightTurn:
                 configuration.bearing = configuration.bearing.right
             case .forwardStep:
-                switch configuration.bearing {
-                case .east:
-                    configuration.position.longitude += 1
-                case .south:
-                    configuration.position.latitude -= 1
-                case .west:
-                    configuration.position.longitude -= 1
-                case .north:
-                    configuration.position.latitude += 1
-                }
+                configuration.position = configuration.positionAhead
             }
         }
     }
