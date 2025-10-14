@@ -11,22 +11,22 @@ final class RoverTests: XCTestCase {
             ),
             (
                 "1 2 \(RoverState.bearingNorth)",
-                "L",
+                String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingWest)"
             ),
             (
                 "1 2 \(RoverState.bearingWest)",
-                "L",
+                String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingSouth)"
             ),
             (
                 "1 2 \(RoverState.bearingSouth)",
-                "L",
+                String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingEast)"
             ),
             (
                 "1 2 \(RoverState.bearingEast)",
-                "L",
+                String(Rover.leftTurn),
                 "1 2 \(RoverState.bearingNorth)"
             ),
             (

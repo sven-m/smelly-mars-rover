@@ -15,7 +15,9 @@ class RoverState {
 
 class Rover {
     private var state = RoverState()
-    
+
+    static let leftTurn: Character = "L"
+
     init(startConfiguration: String = "") {
         let configurationComponents = startConfiguration.split(separator: " ")
         if configurationComponents.count >= 3 {
@@ -28,7 +30,7 @@ class Rover {
     func go(commands: String) {
         for command in commands {
             switch command {
-            case "L":
+            case Rover.leftTurn:
                 switch state.bearing {
                 case RoverState.bearingEast:
                     state.bearing = RoverState.bearingNorth
