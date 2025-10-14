@@ -8,7 +8,8 @@
 - [x] Simplify initialization of Rover
 - [x] Change Rover init parameter to RoverState
 - [x] Use direction enum instead of Character
-- [ ] Improve init interface
+- [x] Improve init interface
+- [ ] Improve go() interface
 - [ ] Improve positionAndBearing() interface
 - [ ] Use Position struct instead of two Ints
 - [ ] Use configuration struct for bearing and position
