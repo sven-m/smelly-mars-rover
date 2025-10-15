@@ -2,6 +2,18 @@ import XCTest
 @testable import MarsRover
 
 final class RoverTests: XCTestCase {
+    func testDefaultRover() {
+        let rover1 = Rover()
+        XCTAssert(rover1.configuration.position.latitude == 0)
+        XCTAssert(rover1.configuration.position.longitude == 0)
+        XCTAssert(rover1.configuration.bearing == .north)
+
+        let rover2 = Rover(startingConfiguration: .init(position: .init(), bearing: .default))
+        XCTAssert(rover2.configuration.position.latitude == 0)
+        XCTAssert(rover2.configuration.position.longitude == 0)
+        XCTAssert(rover2.configuration.bearing == .north)
+    }
+
     func testRoverMovements() {
         let testCases: [(Configuration, [Move], Configuration)] = [
             (
