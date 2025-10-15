@@ -117,7 +117,11 @@ final class RoverTests: XCTestCase {
         for (startingConfiguration, moves, expectedOutput) in testCases {
             var rover = Rover(startingConfiguration: startingConfiguration)
             rover.go(moves: moves)
-            XCTAssertEqual(rover.configuration, expectedOutput, "Failed for starting position: \(startingConfiguration), moves: \(moves)")
+            XCTAssertEqual(
+                rover.configuration,
+                expectedOutput,
+                "Failed for starting position: \(startingConfiguration), moves: \(moves)"
+            )
         }
     }
 }
